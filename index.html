@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harmonica-Key Installer</title>
+<meta name="description" content="Installera Harmonica-Key (munspel-tonart) på Waveshare ESP32-S3-Knob-Touch-LCD-1.8 direkt från webbläsaren.">
+<script type="module" src="https://unpkg.com/esp-web-tools@10.2.1/dist/web/install-button.js?module"></script>
+<style>
+  :root {
+    --bg: #f7f6f2; --card: #ffffff; --text: #1d1d1b; --muted: #5f5e58;
+    --border: #e2e0d8; --accent: #2f6fdb; --accent-text: #ffffff;
+    --warn-bg: #fff4d6; --warn-border: #e8c766; --code-bg: #efede6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #151514; --card: #1f1f1d; --text: #ecebe6; --muted: #a3a29b;
+      --border: #34332f; --accent: #6b9cf0; --accent-text: #0e0e0d;
+      --warn-bg: #3a3118; --warn-border: #7a6526; --code-bg: #2a2a27;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #151514; --card: #1f1f1d; --text: #ecebe6; --muted: #a3a29b;
+    --border: #34332f; --accent: #6b9cf0; --accent-text: #0e0e0d;
+    --warn-bg: #3a3118; --warn-border: #7a6526; --code-bg: #2a2a27;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 1.9rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+  h2 { font-size: 1.2rem; margin: 0 0 12px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  section {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px; margin: 0 0 16px;
+  }
+  .warn { background: var(--warn-bg); border-color: var(--warn-border); }
+  ol, ul { padding-left: 1.3em; margin: 0; }
+  li + li { margin-top: 6px; }
+  code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; font-size: 0.92em; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; }
+  .install { text-align: center; padding: 28px 20px; }
+  .install p { margin: 12px 0 0; color: var(--muted); font-size: 0.92rem; }
+  esp-web-install-button { --esp-tools-button-color: var(--accent); --esp-tools-button-text-color: var(--accent-text); }
+  .btn {
+    display: inline-block; background: var(--accent); color: var(--accent-text);
+    border: 0; border-radius: 8px; padding: 12px 22px; font: inherit; font-weight: 600; cursor: pointer;
+  }
+  .nope { color: #c0392b; font-weight: 600; }
+  .scroll { overflow-x: auto; }
+  footer { color: var(--muted); font-size: 0.85rem; text-align: center; margin-top: 24px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Harmonica-Key</h1>
+  <p class="sub">Lyssnar på musik, hittar tonarten och föreslår vilket munspel och vilken position du ska spela i. Version 0.1.0.</p>
+
+  <section class="warn">
+    <strong>Testversion.</strong> Det här är första gången programmet körs på riktig hårdvara.
+    Mikrofon, skärm, ratt och pekskärm har bara testats på dator. Om något inte fungerar
+    vill vi gärna veta exakt vad som händer (se längst ner).
+  </section>
+
+  <section>
+    <h2>Du behöver</h2>
+    <ul>
+      <li>En <strong>Waveshare ESP32-S3-Knob-Touch-LCD-1.8</strong> (den runda skärmen med vridratt).</li>
+      <li>En USB-C-kabel som klarar <strong>data</strong> (inte bara laddning).</li>
+      <li>En dator med <strong>Google Chrome</strong> eller <strong>Microsoft Edge</strong>. Safari, Firefox och mobiler fungerar inte.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Installera</h2>
+    <ol>
+      <li>Anslut enheten till datorn med USB-C-kabeln.</li>
+      <li>Klicka på <strong>Installera</strong> nedan och välj porten i listan som dyker upp
+        (heter ofta <code>USB JTAG/serial debug unit</code>, <code>usbmodem…</code> eller <code>COM…</code>).</li>
+      <li>Välj <strong>Install Harmonica-Key</strong>. Kryssa gärna i <em>Erase device</em> första gången.</li>
+      <li>Vänta tills det står klart (ca en minut). Enheten startar om av sig själv.</li>
+    </ol>
+  </section>
+
+  <section class="install">
+    <esp-web-install-button manifest="manifest.json">
+      <button slot="activate" class="btn">Installera Harmonica-Key</button>
+      <span slot="unsupported" class="nope">Din webbläsare stöder inte Web Serial. Öppna sidan i Chrome eller Edge på en dator.</span>
+      <span slot="not-allowed" class="nope">Sidan måste öppnas via https:// för att kunna installera.</span>
+    </esp-web-install-button>
+    <p>Via samma knapp kan du senare välja <em>Logs &amp; Console</em> för att se vad enheten skriver.</p>
+  </section>
+
+  <section>
+    <h2>Om det inte fungerar</h2>
+    <ul>
+      <li><strong>Ingen port syns, eller installationen misslyckas:</strong> vänd USB-C-kontakten ett halvt varv (180°) och försök igen.
+        Kortet har två chip och kontaktens riktning avgör vilket datorn pratar med.</li>
+      <li>Prova en annan kabel. Många USB-C-kablar kan bara ladda.</li>
+      <li>Om installationen fastnar på "Connecting": håll inne <strong>BOOT</strong>-knappen (om kortet har en) medan du ansluter kabeln, släpp, och försök igen.</li>
+      <li>Skärmen är svart efter installationen: koppla ur och in kabeln en gång.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Så används den</h2>
+    <ul>
+      <li>Spela musik från en <strong>högtalare</strong> (inte hörlurar), med enheten <strong>0,5–1 m</strong> bort.</li>
+      <li>Första förslaget kommer efter ca 4 sekunder musik. Fram till ca 8 sekunder visas det i grått (osäkert).</li>
+      <li><strong>Svep</strong> åt vänster/höger för att byta vy: Resultat, Kroma, Spektrum, Debug.</li>
+      <li><strong>Vrid ratten</strong> för att byta stil mellan <em>Rock/Blues</em> och <em>Melodi</em>.</li>
+      <li><strong>Tryck</strong> på skärmen för att frysa/släppa visningen.</li>
+      <li>Ringen runt kanten: grön = säker, gul = samlar/osäker, röd = oklart.</li>
+    </ul>
+    <p style="margin:14px 0 8px">Skärmtexterna saknar å/ä/ö (typsnittet har inte de tecknen). Så räknar den fram munspelet:</p>
+    <div class="scroll">
+    <table>
+      <tr><th>Stil</th><th>Låt i dur</th><th>Låt i moll</th></tr>
+      <tr><td>Rock/Blues</td><td>2:a position (cross), munspel = tonart + 5 halvtoner</td><td>3:e position, munspel = tonart + 10 halvtoner</td></tr>
+      <tr><td>Melodi</td><td>1:a position, munspel = tonart</td><td>4:e position, munspel = tonart + 3 halvtoner</td></tr>
+    </table>
+    </div>
+    <p style="margin:12px 0 0">Exempel: en låt i G dur ger C-munspel i 2:a position (Rock/Blues) eller G-munspel i 1:a position (Melodi).</p>
+  </section>
+
+  <section>
+    <h2>Vad vi vill veta</h2>
+    <p style="margin:0 0 10px">För varje låt du testar, anteckna gärna:</p>
+    <ul>
+      <li>Låt och artist, och vilken tonart den faktiskt går i (om du vet).</li>
+      <li>Vad enheten visade (tonart, munspel, position, och "Eller"-raden om den syntes).</li>
+      <li>Lät förslaget bra när du spelade? Vilken stil (Rock/Blues eller Melodi) passade bäst?</li>
+      <li>Hur många sekunder det tog innan förslaget blev stabilt.</li>
+      <li>Ungefärligt avstånd och volym.</li>
+    </ul>
+    <p style="margin:12px 0 0">Om något inte fungerar alls: ett foto av skärmen och en kopia av texten i <em>Logs &amp; Console</em> hjälper mycket.</p>
+  </section>
+
+  <footer>Harmonica-Key 0.1.0 · Installeras med ESP Web Tools</footer>
+</main>
+</body>
+</html>

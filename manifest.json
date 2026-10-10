@@ -1,0 +1,11 @@
+{
+  "name": "Harmonica-Key (munspel-tonart)",
+  "version": "0.1.0",
+  "new_install_prompt_erase": true,
+  "builds": [
+    {
+      "chipFamily": "ESP32-S3",
+      "parts": [{ "path": "firmware/harmonica-key.bin", "offset": 0 }]
+    }
+  ]
+}
