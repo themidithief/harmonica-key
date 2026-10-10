@@ -93,7 +93,7 @@
       <span slot="unsupported" class="nope">Din webbläsare stöder inte Web Serial. Öppna sidan i Chrome eller Edge på en dator.</span>
       <span slot="not-allowed" class="nope">Sidan måste öppnas via https:// för att kunna installera.</span>
     </esp-web-install-button>
-    <p>Via samma knapp kan du senare välja <em>Logs &amp; Console</em> för att se vad enheten skriver.</p>
+    <p>När appen redan är installerad visar samma knapp en meny med bland annat <em>Logs &amp; Console</em> (se längst ner).</p>
   </section>
 
   <section>
@@ -102,8 +102,7 @@
       <li><strong>Ingen port syns, eller installationen misslyckas:</strong> vänd USB-C-kontakten ett halvt varv (180°) och försök igen.
         Kortet har två chip och kontaktens riktning avgör vilket datorn pratar med.</li>
       <li>Prova en annan kabel. Många USB-C-kablar kan bara ladda.</li>
-      <li>Om installationen fastnar på "Connecting": håll inne <strong>BOOT</strong>-knappen (om kortet har en) medan du ansluter kabeln, släpp, och försök igen.</li>
-      <li>Skärmen är svart efter installationen: koppla ur och in kabeln en gång.</li>
+      <li>Installationen fastnar på "Connecting", eller skärmen är svart efteråt: dra ur kabeln, sätt i den igen och försök på nytt. Enheten har ingen reset-knapp, så det är så man startar om den.</li>
     </ul>
   </section>
 
@@ -138,7 +137,12 @@
       <li>Hur många sekunder det tog innan förslaget blev stabilt.</li>
       <li>Ungefärligt avstånd och volym.</li>
     </ul>
-    <p style="margin:12px 0 0">Om något inte fungerar alls: ett foto av skärmen och en kopia av texten i <em>Logs &amp; Console</em> hjälper mycket.</p>
+    <p style="margin:12px 0 8px">Om något inte fungerar alls hjälper det mycket med ett foto av skärmen och en kopia av enhetens logg. Loggen hämtar du så här, med enheten ansluten till datorn:</p>
+    <ol>
+      <li>Klicka på <strong>Installera Harmonica-Key</strong> på den här sidan och välj porten igen.</li>
+      <li>I menyn som visas väljer du <strong>Logs &amp; Console</strong> (installera inte om).</li>
+      <li>Enheten skriver en rad per sekund, t.ex. <code>RMS -42.1 dBFS | Klart | visad: G dur | …</code>. Spela musik en stund, markera texten och kopiera den.</li>
+    </ol>
   </section>
 
   <footer>Harmonica-Key 0.1.0 · Installeras med ESP Web Tools</footer>
